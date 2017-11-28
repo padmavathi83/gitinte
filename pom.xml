@@ -9,6 +9,39 @@
 
   <name>maven</name>
   <url>http://maven.apache.org</url>
+      <scm>
+    <connection>scm:git:https://github.com/padmavathi83/gitinte.git</connection>
+    <developerConnection>scm:git:https://github.com/padmavathi83/gitinte.git</developerConnection>
+    <url>https://github.com/padmavathi83/gitinte.git</url>
+  </scm>
+  <build>
+ <plugins>
+    <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.0.2</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <!-- here the phase you need -->
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>${basedir}/target/checkout</directory>
+                  <filtering>true</filtering>
+                </resource>
+              </resources>              
+            </configuration>            
+          </execution>
+        </executions>
+      </plugin>
+ </plugins>
+</build>
+
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
